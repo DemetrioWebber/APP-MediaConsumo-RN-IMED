@@ -1,21 +1,39 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import 'react-native-gesture-handler'
+import { NavigationContainer } from '@react-navigation/native'
+import Home from './src/views/Home'
+import MediaFinal from './src/views/MediaFinal'
+import { createStackNavigator } from '@react-navigation/stack'
 
 export default function App() {
+
+  const Stack = createStackNavigator()
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Login">
+
+        <Stack.Screen
+          name="Home"
+          component={Home}
+          options={{
+            title: 'Média de Consumo',
+            headerTitleAlign: "center"
+
+          }}
+        />
+        <Stack.Screen
+          name="MediaFinal"
+          component={MediaFinal}
+          options={{
+            title: 'Média final',
+            headerTitleAlign: "center"
+
+          }}
+        />
+        
+
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
